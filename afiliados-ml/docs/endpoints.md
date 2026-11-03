@@ -1,5 +1,12 @@
 # Endpoints externos
 
+## Perfis de demonstração — parte 2
+
+Nenhuma rota HTTP foi adicionada ou alterada. Seleção de perfil e URLs com hash
+são navegação do front-end, não endpoints ou autenticação. O vendedor reutiliza
+health, catálogo e histórico; o fornecedor visualiza páginas locais de preparação.
+O Bearer token não ganha permissões por perfil nesta etapa.
+
 ## Design e modo escuro — parte 1
 
 Nenhum endpoint foi adicionado ou alterado. A preferência de aparência é local;

@@ -13,9 +13,14 @@ npm ci
 npm run dev
 ```
 
-Acesse **http://localhost:5173**, clique em **Conectar minha API** e informe o
+Acesse **http://localhost:5173**, escolha **Entrar como vendedor**, clique em
+**Conectar API** e informe o
 endereço da API e o `API_TOKEN` do `.env` do backend. O token fica em memória
 e não deve ser incluído no código do front-end. Node.js 22.12+ é necessário.
+
+A entrada também oferece **Fornecedor**, com visão geral e estrutura da futura
+área de estoque. Os acessos são demonstrações, sem autenticação real. Use
+**Trocar perfil** para retornar à seleção; a conexão da API será encerrada.
 
 Ferramenta em construção, por etapas. As etapas 1 e 2 incluem ambiente,
 configuração, modelos de produtos, histórico de preços e ofertas, com migrações.
