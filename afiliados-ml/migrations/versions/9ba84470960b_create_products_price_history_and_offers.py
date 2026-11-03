@@ -1,7 +1,7 @@
 """create products price history and offers
 
 Revision ID: 9ba84470960b
-Revises: 
+Revises: none
 """
 from typing import Sequence, Union
 
