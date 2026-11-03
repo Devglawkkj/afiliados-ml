@@ -1,5 +1,49 @@
 # Garimpo — front-end local
 
+## Perfis de demonstração — parte 2
+
+A primeira tela permite escolher **Entrar como vendedor** ou **Entrar como
+fornecedor**, sem email, senha ou criação de conta.
+
+- Vendedor: **Catálogo** e **Meu espaço**. Mantém a conexão manual à API e os
+  produtos fictícios existentes.
+- Fornecedor: **Visão geral** e **Meu estoque**. O estoque mostra a estrutura
+  planejada e informa que o cadastro virá na parte 3; não cria produtos nesta entrega.
+- **Trocar perfil** retorna à seleção, desconecta a API, limpa token/filtros,
+  cancela consultas e fecha diálogos. A preferência de tema é preservada.
+- Recarregar exige nova escolha. Hash na URL não seleciona perfil automaticamente.
+
+Esses acessos organizam o protótipo: não são autenticação, contas isoladas ou
+permissões de backend. Os endpoints continuam usando o Bearer token local.
+Autenticação real e permissões serão uma etapa própria antes de usuários reais.
+
+Para conferir: entrar como fornecedor e visitar Meu estoque; trocar para
+vendedor e conectar a API; conferir os seis produtos; trocar de perfil e voltar
+ao vendedor, verificando que exige conexão novamente; recarregar e confirmar
+retorno à seleção, preservando o tema.
+
+`src/profiles.js` mantém configuração das navegações, resolução de páginas e
+sessão visual em memória. `src/profiles.css` usa os tokens claro/escuro existentes.
+`src/main.js` conecta os eventos ao catálogo. Nenhuma chamada externa foi adicionada.
+
+Validação: 12 testes frontend passaram e build gerado; navegador confirmou
+fornecedor/estoque, vendedor com seis produtos, desconexão ao trocar, retorno
+à seleção após reload e layout móvel sem overflow horizontal nas dimensões verificadas.
+
+Comandos desta parte, na raiz `MLIAGLAU/` (registro; não repetir se já executados):
+
+```powershell
+git fetch origin
+git switch -c feature/demo-profiles origin/main
+git add afiliados-ml/frontend/index.html afiliados-ml/frontend/src/main.js afiliados-ml/frontend/src/profiles.js afiliados-ml/frontend/src/profiles.css afiliados-ml/frontend/tests/profiles.test.js
+git commit -m "feat: add seller and supplier demo profile navigation" -m "Introduce explicit demo entry, role-specific pages and in-memory profile sessions. Reset catalog connections on profile changes and preserve appearance preferences. Validation: 12 frontend tests passed, build generated and browser seller/supplier/mobile flows reviewed."
+git add afiliados-ml/frontend/README.md afiliados-ml/README.md afiliados-ml/docs
+git commit -m "docs: explain demo profiles and staged inventory delivery" -m "Document profile selection, connection reset and limits of simulated access. Update setup, roadmap and endpoint inventory for part 2. Validation: git diff origin/main --check."
+git push -u origin feature/demo-profiles
+```
+
+Merge somente após validação explícita do PR.
+
 Interface do MVP para visualizar o catálogo da API existente. Usa HTML,
 CSS e JavaScript com módulos, e Vite para desenvolvimento/build. Nenhum
 framework de UI ou serviço externo é necessário. Não realiza compras,
@@ -62,7 +106,8 @@ npm ci
 npm run dev
 ```
 
-Abra **http://localhost:5173**. Clique em **Conectar minha API** e informe
+Abra **http://localhost:5173**, escolha **Entrar como vendedor**, clique em
+**Conectar API** e informe
 o endereço `http://127.0.0.1:8000` e o valor de `API_TOKEN` do `.env` do backend,
 sem as aspas. O setup local configura essa origem em `CORS_ORIGINS` quando
 a variável ainda não existe. Se já houver uma configuração própria, incluir

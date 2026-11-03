@@ -1,0 +1,78 @@
+body[data-profile="none"] .main-shell { margin-left: 0; }
+.profile-entry h1:focus, .profile-page-heading h1:focus, #catalog-title:focus { outline: none; }
+.profile-entry { max-width: 1040px; padding: 48px 36px 35px; text-align: center; }
+.entry-brand { justify-content: center; font-size: 34px; margin-bottom: 32px; }
+.profile-entry > .small-tag { font-size: 9px; letter-spacing: 1.2px; margin-bottom: 22px; }
+.profile-entry h1 { font-size: clamp(32px, 4vw, 49px); line-height: 1.17; letter-spacing: -1.9px; font-weight: 600; }
+.entry-subtitle { color: var(--muted); font-size: 14px; line-height: 1.8; margin: 20px 0 32px; }
+.profile-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; text-align: left; }
+.profile-option { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); padding: 30px; display: flex; flex-direction: column; box-shadow: var(--shadow); }
+.seller-option { border-top: 3px solid var(--accent); }
+.supplier-option { border-top: 3px solid #7d9e67; }
+.role-symbol { display: grid; place-items: center; width: 52px; height: 52px; background: var(--accent-soft); color: var(--accent); border-radius: 14px; font-size: 29px; margin-bottom: 22px; }
+.supplier-option .role-symbol { background: var(--selected); color: var(--selected-text); }
+.role-kicker { font-size: 9px; letter-spacing: 1.5px; color: var(--muted); font-weight: 600; }
+.profile-option h2 { font-size: 26px; letter-spacing: -.8px; font-weight: 600; margin: 10px 0 0; }
+.profile-option p { color: var(--muted); font-size: 13px; line-height: 1.8; margin: 14px 0; }
+.profile-option ul { padding: 0; margin: 8px 0 27px; list-style: none; color: var(--secondary-text); font-size: 12px; line-height: 2.3; }
+.profile-option li::before { content: '✓'; color: var(--accent); margin-right: 10px; }
+.supplier-option li::before { color: var(--selected-text); }
+.profile-option .button { width: 100%; justify-content: space-between; padding: 14px 16px; font-size: 12px; margin-top: auto; }
+.entry-disclaimer { display: flex; justify-content: center; gap: 8px; font-size: 11px; color: var(--muted); margin: 27px 0 0; line-height: 1.8; }
+#profile-navigation { display: grid; gap: 5px; }
+.profile-switch { display: flex; gap: 10px; align-items: center; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 18px 8px 0; color: var(--secondary-text); font-size: 12px; width: 100%; }
+.profile-switch > span:first-child { display: grid; place-items: center; width: 28px; height: 28px; font-size: 24px; color: var(--accent); }
+.profile-switch small { display: block; color: var(--muted); font-size: 9px; margin-top: 5px; }
+.profile-switch:hover { color: var(--accent); }
+.profile-page-heading { margin-bottom: 30px; }
+.profile-page-heading .subtitle { line-height: 1.8; }
+.role-notice { display: flex; align-items: center; gap: 16px; padding: 20px; border: 1px solid var(--notice-border); background: var(--notice); color: var(--notice-text); border-radius: 12px; }
+.role-notice > span { font-size: 30px; }
+.role-notice strong { font-size: 13px; font-weight: 600; }
+.role-notice p { margin: 8px 0 0; font-size: 12px; line-height: 1.8; }
+.workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 28px; }
+.workflow-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.step-number { display: block; font-size: 30px; color: var(--muted); margin-bottom: 22px; font-weight: 450; }
+.workflow-card .small-tag { font-size: 9px; }
+.workflow-card h2 { font-size: 17px; line-height: 1.4; font-weight: 550; margin: 17px 0 9px; letter-spacing: -.3px; }
+.workflow-card p { font-size: 12px; line-height: 1.9; color: var(--muted); margin: 0; }
+.role-next-step { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-soft); margin-top: 28px; }
+.role-next-step h2 { font-size: 18px; font-weight: 550; letter-spacing: -.3px; margin: 0; }
+.role-next-step p { font-size: 12px; color: var(--muted); line-height: 1.8; margin-bottom: 0; }
+.role-next-step .button { flex-shrink: 0; }
+.inventory-preview { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.inventory-columns { display: grid; grid-template-columns: 2fr 1.5fr 1fr 1fr; gap: 16px; padding: 18px 24px; background: var(--surface-raised); color: var(--secondary-text); font-size: 11px; }
+.inventory-empty { display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 65px 25px; }
+.inventory-empty h2 { font-size: 24px; font-weight: 550; letter-spacing: -.5px; margin: 0; }
+.inventory-empty p { font-size: 13px; line-height: 1.9; color: var(--muted); max-width: 470px; margin: 15px 0 24px; }
+.profile-footnote { color: var(--muted); font-size: 11px; line-height: 1.9; margin-top: 20px; }
+@media (max-width: 1000px) {
+  .workflow-grid { grid-template-columns: 1fr; }
+  .workflow-card { padding: 22px; }
+  .step-number { font-size: 23px; margin-bottom: 12px; }
+  .role-next-step { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 600px) {
+  .profile-entry { padding: 30px 20px; }
+  .entry-brand { font-size: 29px; margin-bottom: 27px; }
+  .profile-entry h1 { max-width: none; font-size: 33px; letter-spacing: -1.2px; }
+  .entry-subtitle { font-size: 12px; }
+  .profile-options { grid-template-columns: 1fr; gap: 18px; }
+  .profile-option { padding: 25px; }
+  .profile-option h2 { font-size: 25px; }
+  .entry-disclaimer { font-size: 10px; }
+  .sidebar { flex-wrap: wrap; gap: 16px; }
+  #profile-navigation { display: flex; width: 100%; order: 3; gap: 8px; }
+  .profile-switch { padding: 0; border: 0; width: auto; font-size: 10px; }
+  .profile-switch small { display: none; }
+  .profile-switch > span:first-child { width: 21px; font-size: 21px; }
+  .profile-page-heading h1 { font-size: 29px; max-width: none; }
+  .role-notice { padding: 16px; gap: 12px; }
+  .role-notice strong { font-size: 12px; }
+  .role-notice p { font-size: 11px; }
+  .inventory-columns { display: none; }
+  .inventory-empty { padding: 45px 22px; }
+  .inventory-empty h2 { font-size: 22px; }
+  .inventory-empty p { font-size: 12px; }
+  .role-next-step { padding: 22px; }
+}

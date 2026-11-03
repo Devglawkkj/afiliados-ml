@@ -2,6 +2,12 @@
 
 ## Evolução validada: fornecedor e vendedor
 
+Parte 1 integrada pelo PR #5. A parte 2 em `feature/demo-profiles` adiciona
+seleção de perfis e navegações próprias, com sessões visuais em memória. A
+escolha não autentica usuários. O fornecedor vê a preparação do estoque e o
+vendedor reutiliza o catálogo fictício. Cadastro de estoque fica na parte 3,
+após validação do PR desta entrega.
+
 O fornecedor cadastra seu estoque no SaaS e executa separação, embalagem,
 expedição e logística. O vendedor escolhe os itens, personaliza seu anúncio
 para a própria conta Mercado Livre e cuida do chat e do pós-venda. O cadastro
