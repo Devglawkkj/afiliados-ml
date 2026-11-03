@@ -2,6 +2,12 @@
 
 ## Evolução validada: fornecedor e vendedor
 
+Parte 2 integrada pelo PR #6. A parte 3 em `feature/supplier-inventory` entrega
+cadastro/edição de estoque fictício persistido no navegador, com fotos, preço,
+quantidade, prazo e disponibilidade. Cadastro não depende da API Python e
+ainda não alimenta o catálogo do vendedor. Parte 4 fará essa conexão no protótipo
+após aprovação desta entrega. Não há estoque real ou isolamento de contas.
+
 Parte 1 integrada pelo PR #5. A parte 2 em `feature/demo-profiles` adiciona
 seleção de perfis e navegações próprias, com sessões visuais em memória. A
 escolha não autentica usuários. O fornecedor vê a preparação do estoque e o

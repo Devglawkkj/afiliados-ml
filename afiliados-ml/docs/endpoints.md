@@ -1,5 +1,11 @@
 # Endpoints externos
 
+## Estoque do fornecedor — parte 3
+
+Nenhum endpoint foi criado ou alterado. O cadastro fictício usa um adapter de
+localStorage; fotos são processadas apenas no navegador. O catálogo do vendedor
+continua usando as rotas de leitura existentes, sem consumir esse estoque ainda.
+
 ## Perfis de demonstração — parte 2
 
 Nenhuma rota HTTP foi adicionada ou alterada. Seleção de perfil e URLs com hash
