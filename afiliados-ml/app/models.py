@@ -56,6 +56,7 @@ class Product(Base):
         CheckConstraint("length(item_id) > 0", name="ck_product_item_id"),
         CheckConstraint("length(title) > 0", name="ck_product_title"),
         CheckConstraint("currency = 'BRL'", name="ck_product_currency_brl"),
+        CheckConstraint("source IN ('demo', 'manual', 'mercadolivre')", name="ck_product_source"),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -66,6 +67,7 @@ class Product(Base):
     image_url: Mapped[str | None] = mapped_column(String(2048))
     category_id: Mapped[str | None] = mapped_column(String(64), index=True)
     currency: Mapped[str] = mapped_column(String(3), default="BRL", server_default="BRL")
+    source: Mapped[str] = mapped_column(String(16), default="manual", server_default="manual")
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utc_now)
 
 
