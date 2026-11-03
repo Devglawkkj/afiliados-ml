@@ -2,6 +2,11 @@
 
 ## Escopo atual acordado
 
+O MVP da API foi integrado no PR #3. A etapa atual, `feature/frontend-catalog`,
+adiciona o catálogo visual local conectado a essa API: busca, filtros, cards,
+detalhes e histórico de preços. As telas não fazem captação ou publicação.
+O front-end será revisado por PR próprio antes de qualquer merge.
+
 O usuário antecipou a API para esboçar o front-end com **produtos fictícios**.
 As etapas 1 e 2 já foram integradas (PRs #1 e #2).
 A branch `feature/products-api` entrega contrato HTTP versionado, consultas,
