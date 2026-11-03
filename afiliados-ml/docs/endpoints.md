@@ -2,6 +2,10 @@
 
 ## MVP atual — API interna e exemplos fictícios
 
+O front-end em `frontend/` consome os endpoints existentes de health, produtos,
+detalhes e histórico, além dos assets locais. Não adiciona ou altera endpoints
+do backend. A origem de desenvolvimento é `http://localhost:5173`.
+
 Os endpoints internos agora estão implementados e documentados em
 [contrato da API](api.md) e [OpenAPI versionado](openapi.json).
 Rotas de leitura: `GET /api/v1/health`, `GET /api/v1/products`,

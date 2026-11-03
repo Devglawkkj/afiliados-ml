@@ -1,5 +1,22 @@
 # Afiliados Mercado Livre
 
+## Front-end do MVP
+
+O catálogo visual está em `frontend/`, conectado à API e aos produtos fictícios.
+Veja [instruções completas do front-end](frontend/README.md).
+
+Com a API em execução na porta 8000, abra outro terminal:
+
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
+
+Acesse **http://localhost:5173**, clique em **Conectar minha API** e informe o
+endereço da API e o `API_TOKEN` do `.env` do backend. O token fica em memória
+e não deve ser incluído no código do front-end. Node.js 22.12+ é necessário.
+
 Ferramenta em construção, por etapas. As etapas 1 e 2 incluem ambiente,
 configuração, modelos de produtos, histórico de preços e ofertas, com migrações.
 Ainda não busca produtos, gera links ou publica mensagens.
@@ -147,7 +164,7 @@ Validação da etapa: quatro testes passaram, diagnóstico do banco executado e
 Codex por restrição de acesso à pasta temporária do Windows.
 
 HTTPX já é usado nos testes HTTP; APScheduler e python-telegram-bot continuam
-adiados. O MVP não inclui telas, coleta real, descontos ou publicações.
+adiados. O MVP agora inclui catálogo visual, sem coleta real, descontos ou publicações.
 
 ## Referências
 
