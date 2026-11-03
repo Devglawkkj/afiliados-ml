@@ -4,7 +4,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
-from pydantic import Field
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +22,8 @@ class Settings(BaseSettings):
 
     database_url: str = Field(default="sqlite:///./afiliados.db", min_length=1, repr=False)
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] = "INFO"
+    api_token: SecretStr | None = Field(default=None, repr=False)
+    cors_origins: list[str] = Field(default_factory=list)
 
 
 @lru_cache

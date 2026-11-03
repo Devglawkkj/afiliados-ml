@@ -1,5 +1,18 @@
 # Endpoints externos
 
+## MVP atual — API interna e exemplos fictícios
+
+Os endpoints internos agora estão implementados e documentados em
+[contrato da API](api.md) e [OpenAPI versionado](openapi.json).
+Rotas de leitura: `GET /api/v1/health`, `GET /api/v1/products`,
+`GET /api/v1/products/{product_id}` e `GET /api/v1/products/{product_id}/prices`.
+Os assets fictícios são servidos em `GET /demo-images/{name}.svg`.
+Swagger: `GET /docs`; esquema gerado: `GET /openapi.json`.
+
+Nenhum endpoint externo foi adicionado ou chamado para captar dados.
+O seed produz somente produtos inventados, com imagens locais e links
+`example.invalid`. As referências futuras abaixo continuam sem implementação.
+
 ## Etapa 2
 
 Nenhum endpoint foi adicionado ou chamado. A etapa implementa somente modelos,
