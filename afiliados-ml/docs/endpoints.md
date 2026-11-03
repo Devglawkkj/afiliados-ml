@@ -1,5 +1,10 @@
 # Endpoints externos
 
+## Design e modo escuro — parte 1
+
+Nenhum endpoint foi adicionado ou alterado. A preferência de aparência é local;
+catálogo, autenticação por token e histórico usam os contratos já existentes.
+
 ## MVP atual — API interna e exemplos fictícios
 
 O front-end em `frontend/` consome os endpoints existentes de health, produtos,

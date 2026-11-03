@@ -1,5 +1,35 @@
 # Etapas e validação
 
+## Evolução validada: fornecedor e vendedor
+
+O fornecedor cadastra seu estoque no SaaS e executa separação, embalagem,
+expedição e logística. O vendedor escolhe os itens, personaliza seu anúncio
+para a própria conta Mercado Livre e cuida do chat e do pós-venda. O cadastro
+do fornecedor, o rascunho de cada vendedor e o pedido terão identidades próprias.
+
+Entregas em partes, com branch, commits explicativos e PR antes de cada merge:
+
+1. `feature/design-dark-mode`: melhorias de design e temas claro/escuro/sistema.
+2. Perfis de demonstração de vendedor e fornecedor, com navegações próprias.
+   Seleção de perfil não será apresentada como autenticação real.
+3. Cadastro fictício de estoque do fornecedor: produto, fotos, descrição,
+   quantidade, preço de fornecimento e prazo de expedição.
+4. Catálogo do vendedor: disponíveis, fotos, valores, quantidades e fornecedor.
+5. Editor de rascunho do vendedor: título, subtítulo de divulgação, descrição,
+   fotos, preço e quantidade; permitir copiar textos e preparar imagens.
+6. Pedidos e responsabilidades de envio/pós-venda; definir reserva de estoque,
+   repasse e rastreamento antes de operar vendas reais.
+7. Integrações reais: autenticação, permissões, persistência compartilhada,
+   sincronização de estoque e publicação oficial, em etapas próprias.
+
+O link do anúncio é separado do eventual link de afiliado, informado pelo
+vendedor. Cadastro de anúncio não gera automaticamente link de afiliado.
+A publicação automática depende da conexão autorizada à conta do vendedor,
+dos atributos exigidos e do fluxo oficial vigente. O editor do vendedor não
+deve alterar o produto original do fornecedor.
+
+A parte 1 implementa apenas aparência; as demais aguardam validação sequencial.
+
 ## Escopo atual acordado
 
 O MVP da API foi integrado no PR #3. A etapa atual, `feature/frontend-catalog`,

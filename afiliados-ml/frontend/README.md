@@ -5,6 +5,42 @@ CSS e JavaScript com módulos, e Vite para desenvolvimento/build. Nenhum
 framework de UI ou serviço externo é necessário. Não realiza compras,
 captação real, aprovação de ofertas ou publicações.
 
+## Aparência — parte 1
+
+O seletor **Aparência**, no topo, oferece Claro, Escuro e Sistema. A opção
+Sistema acompanha a configuração do dispositivo, inclusive mudanças enquanto
+a página está aberta. A escolha é restaurada antes da primeira pintura para
+evitar um clarão claro ao abrir o modo escuro.
+
+Somente a preferência `garimpo.theme` é salva em localStorage. O token da API
+continua somente em memória. Se o navegador bloquear o armazenamento, a troca
+de tema funciona na aba atual e a próxima abertura usa o tema do sistema.
+
+Os temas abrangem catálogo, formulários, conexão, estados de erro/vazio,
+detalhes, tabela e gráfico. O design também melhora tamanhos de texto,
+contraste de rótulos e hierarquia dos preços. Cores compartilhadas estão em
+`src/theme.css`; comportamento e preferências em `src/theme.js`; inicialização
+visual antes da pintura em `public/theme-init.js`.
+
+Validação desta parte: nove testes do frontend passaram, build gerado e revisão
+no navegador dos temas claro/escuro, detalhes e restauração após reload. O layout
+foi inspecionado em viewport de celular sem overflow horizontal.
+
+Fluxo Git desta parte, na raiz `MLIAGLAU/` (registro dos comandos da entrega):
+
+```powershell
+git fetch origin
+git switch -c feature/design-dark-mode origin/main
+git add afiliados-ml/frontend/index.html afiliados-ml/frontend/public/theme-init.js afiliados-ml/frontend/src/main.js afiliados-ml/frontend/src/theme.css afiliados-ml/frontend/src/theme.js afiliados-ml/frontend/tests/theme.test.js
+git commit -m "feat: add dark mode and improve catalog design" -m "Add light, dark and system appearance with resilient preference persistence. Improve typography, contrast and card hierarchy across catalog, dialogs and price history. Validation: nine frontend tests passed, build generated and browser theme/mobile review completed."
+git add afiliados-ml/frontend/README.md afiliados-ml/docs
+git commit -m "docs: record theme controls and supplier seller delivery stages" -m "Document appearance behavior and the approved supplier-to-seller workflow. Keep profile, inventory, listing editor and logistics work in subsequent reviewable steps. Validation: git diff origin/main --check."
+git push -u origin feature/design-dark-mode
+```
+
+Não repetir criação de branch/commits já existentes. Fazer merge somente após
+validação explícita do PR.
+
 ## Execução
 
 Requer Node.js 22.12+ e npm. As dependências exatas estão em `package-lock.json`.

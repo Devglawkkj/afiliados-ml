@@ -1,8 +1,11 @@
 import './style.css';
+import './theme.css';
+import { initializeTheme } from './theme.js';
 import { createApi, imageUrl } from './api.js';
 import { money, escapeHtml as e, categoryName, categoryNames, sourceName, dateLabel } from './format.js';
 
 const $ = selector => document.querySelector(selector);
+initializeTheme();
 const connectionDialog = $('#connect-dialog');
 const detailDialog = $('#product-dialog');
 const grid = $('#product-grid');
