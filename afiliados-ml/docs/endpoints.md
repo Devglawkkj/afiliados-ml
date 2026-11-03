@@ -1,5 +1,10 @@
 # Endpoints externos
 
+## Etapa 2
+
+Nenhum endpoint foi adicionado ou chamado. A etapa implementa somente modelos,
+persistência e migrações; veja [banco de dados](database.md).
+
 ## Etapa 1
 
 Nenhum endpoint externo é utilizado. O comando local executa somente `SELECT 1`.

@@ -29,6 +29,9 @@ Se já houver histórico remoto, inspecionar e adaptar o plano sem sobrescrevê-
 
 ## Sequência proposta
 
+Etapa 1 integrada pelo PR #1. Etapa 2 implementada em `feature/product-models`,
+com 24 testes locais passando, aguardando revisão e aprovação no respectivo PR.
+
 | Etapa | Branch | Entrega e critério de aceite |
 | --- | --- | --- |
 | 1 | `feature/config-database` | Ambiente, configuração e sessões; quatro testes já passaram localmente |

@@ -1,7 +1,8 @@
 # Afiliados Mercado Livre
 
-Ferramenta em construção, por etapas. A etapa 1 configura o ambiente e o banco;
-ainda não busca produtos, gera links ou publica mensagens.
+Ferramenta em construção, por etapas. As etapas 1 e 2 incluem ambiente,
+configuração, modelos de produtos, histórico de preços e ofertas, com migrações.
+Ainda não busca produtos, gera links ou publica mensagens.
 
 ## Preparação (PowerShell)
 
@@ -35,23 +36,27 @@ credencial de canal é necessária nesta etapa.
 ## Execução e testes
 
 ```powershell
+.\.venv\Scripts\python.exe -m alembic upgrade head
 .\.venv\Scripts\python.exe -m app.main
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-A execução valida a conexão e pode criar o arquivo SQLite local. Nenhuma tabela
-de negócio é criada. Caminhos SQLite relativos são resolvidos a partir da raiz
-do projeto, independentemente do diretório de trabalho.
+O Alembic cria ou atualiza as tabelas; `app.main` apenas valida a conexão.
+Caminhos SQLite relativos são resolvidos a partir da raiz do projeto,
+independentemente do diretório de trabalho.
 
 ## Organização e decisões
 
 - `app/config.py`: configuração tipada e validada com pydantic-settings.
 - `app/database.py`: base ORM, engine, fábrica de sessões e transações.
 - `app/main.py`: composição e diagnóstico local, sem regras de negócio.
-- `tests/`: prioridade do ambiente, validação, caminhos, commit e rollback.
+- `app/models.py`: produtos, observações em centavos, ofertas e status.
+- `migrations/`: revisões Alembic versionadas.
+- `tests/`: configuração, transações, integridade e migrações; 24 testes passaram.
 - `docs/endpoints.md`: inventário de integrações, ainda sem chamadas externas.
+- `docs/database.md`: relações, dinheiro, datas UTC, status e migrações.
 
-Serviços, modelos, jobs e publishers serão adicionados nas próximas etapas.
+Serviços, jobs e publishers serão adicionados nas próximas etapas.
 As regras de negócio ficarão em `app/services/`, reutilizáveis pelo futuro painel.
 Cada tarefa ou requisição deve abrir sua própria sessão com `session_scope`.
 O chamador controla o ciclo de vida da engine; importar os módulos não conecta
@@ -59,7 +64,7 @@ ao banco. A configuração de logging pertence ao ponto de entrada.
 
 Para PostgreSQL, a camada usa as mesmas APIs do SQLAlchemy; será necessário
 instalar um driver, configurar a conexão e validar com testes de integração.
-Isso ainda não foi testado. Migrações serão introduzidas com os modelos.
+Isso ainda não foi testado. As migrações atuais foram verificadas em SQLite.
 
 ## Git
 
