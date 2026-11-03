@@ -8,19 +8,31 @@
   <title>Garimpo — Catálogo de produtos</title>
   <script src="/theme-init.js"></script>
 </head>
-<body>
+<body data-profile="none">
   <div class="app-shell">
-    <aside class="sidebar">
+    <aside id="profile-sidebar" class="sidebar" hidden>
       <a class="brand" href="#catalogo" aria-label="Garimpo, início"><span class="brand-mark">g<span>↗</span></span>garimpo<span class="brand-dot">.</span></a>
-      <div class="workspace"><span class="workspace-icon">G</span><div>Meu espaço<small>Projeto de afiliados</small></div><span class="workspace-arrow">⌄</span></div>
+      <div class="workspace"><span id="profile-initial" class="workspace-icon">G</span><div><span id="profile-name">Meu espaço</span><small>Perfil de demonstração</small></div></div>
       <p class="nav-caption">ESPAÇO DE TRABALHO</p>
-      <a class="nav-link active" href="#catalogo" aria-current="page"><span aria-hidden="true">▦</span> Catálogo <span class="nav-pill">MVP</span></a>
-      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✧</span><strong>Um bom começo.</strong><p>Explore os exemplos e acompanhe a evolução dos preços.</p><span class="small-tag">Ambiente de demonstração</span></div>
-      <div class="sidebar-footer"><span class="avatar">G</span><div>Meu projeto<small>Desenvolvimento local</small></div></div>
+      <nav id="profile-navigation" aria-label="Navegação do perfil"></nav>
+      <div class="sidebar-note"><span class="note-icon" aria-hidden="true">✧</span><strong id="profile-note-title">Um bom começo.</strong><p id="profile-note-description">Explore os exemplos e acompanhe a evolução dos preços.</p><span class="small-tag">Ambiente de demonstração</span></div>
+      <button id="change-profile" class="profile-switch"><span aria-hidden="true">⇄</span><span>Trocar perfil<small>Sair da demonstração atual</small></span></button>
     </aside>
     <div class="main-shell">
-      <header class="topbar"><div class="breadcrumb">Meu espaço <span>/</span> <strong>Catálogo</strong></div><div class="topbar-actions"><label class="theme-picker"><span aria-hidden="true">◐</span><span class="sr-only">Aparência</span><select id="theme-select"><option value="system">Sistema</option><option value="light">Claro</option><option value="dark">Escuro</option></select></label><button id="connection-button" class="connection-button"><span class="status-dot"></span><span id="connection-label">Conectar API</span><span aria-hidden="true">↗</span></button></div></header>
-      <main id="catalogo">
+      <header class="topbar"><div class="breadcrumb"><span id="workspace-name">Garimpo</span><span>/</span><strong id="breadcrumb-current">Boas-vindas</strong></div><div class="topbar-actions"><label class="theme-picker"><span aria-hidden="true">◐</span><span class="sr-only">Aparência</span><select id="theme-select"><option value="system">Sistema</option><option value="light">Claro</option><option value="dark">Escuro</option></select></label><button id="connection-button" class="connection-button" hidden><span class="status-dot"></span><span id="connection-label">Conectar API</span><span aria-hidden="true">↗</span></button></div></header>
+      <main id="profile-entry" class="profile-entry" aria-labelledby="entry-title">
+        <a class="brand entry-brand" href="#" aria-label="Garimpo, seleção de perfil"><span class="brand-mark">g<span>↗</span></span>garimpo<span class="brand-dot">.</span></a>
+        <span class="small-tag">PROTÓTIPO INTERATIVO</span>
+        <h1 id="entry-title" tabindex="-1">Boas conexões.<br>Novas oportunidades<span>.</span></h1>
+        <p class="entry-subtitle">Quem tem o produto encontra quem sabe vender.<br>Escolha um perfil e conheça seu espaço.</p>
+        <div class="profile-options">
+          <article class="profile-option seller-option"><span class="role-symbol" aria-hidden="true">↗</span><span class="role-kicker">QUERO VENDER</span><h2>Sou vendedor</h2><p>Encontre produtos de fornecedores para preparar seus próprios anúncios no Mercado Livre.</p><ul><li>Explorar o catálogo de demonstração</li><li>Conhecer os preços dos produtos</li><li>Visualizar o futuro fluxo de anúncios</li></ul><button class="button primary" data-enter-profile="seller">Entrar como vendedor <span aria-hidden="true">→</span></button></article>
+          <article class="profile-option supplier-option"><span class="role-symbol" aria-hidden="true">▤</span><span class="role-kicker">TENHO PRODUTOS</span><h2>Sou fornecedor</h2><p>Conheça o espaço onde você vai organizar seu estoque e atender os pedidos dos vendedores.</p><ul><li>Conhecer a área do fornecedor</li><li>Visualizar a organização do estoque</li><li>Entender sua parte na logística</li></ul><button class="button secondary" data-enter-profile="supplier">Entrar como fornecedor <span aria-hidden="true">→</span></button></article>
+        </div>
+        <p class="entry-disclaimer"><span aria-hidden="true">◌</span> Acesso de demonstração. Não cria conta, não pede senha e não autentica usuários.</p>
+      </main>
+      <main id="profile-area" aria-labelledby="profile-area-title" hidden></main>
+      <main id="catalogo" hidden>
         <div class="page-heading"><div><p class="eyebrow">SEU PRÓXIMO BOM ACHADO</p><h1>Catálogo de produtos<span>.</span></h1><p class="subtitle">Tudo o que você está de olho, em um só lugar.</p></div><button class="button secondary" id="refresh-button" disabled><span aria-hidden="true">↻</span> Atualizar catálogo</button></div>
         <section class="demo-banner" aria-label="Aviso de demonstração"><div class="banner-symbol" aria-hidden="true">✳</div><div><strong>Ideias reais. Produtos fictícios.</strong><p>Este é o seu espaço para experimentar. Os produtos e preços são exemplos, sem compras ou publicações.</p></div><span class="demo-label">MODO DEMONSTRAÇÃO</span></section>
         <section class="catalog-section" aria-labelledby="catalog-title">
