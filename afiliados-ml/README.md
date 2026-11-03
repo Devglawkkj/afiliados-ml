@@ -63,6 +63,12 @@ Isso ainda não foi testado. Migrações serão introduzidas com os modelos.
 
 ## Git
 
+O fluxo atual exige Pull Request e aprovação do usuário antes de todo merge.
+Veja [etapas e fluxo de revisão](docs/roadmap.md) e
+[contratos externos previstos](docs/endpoints.md).
+Os comandos de merge abaixo registram a inicialização local anterior a esse
+fluxo; nas próximas etapas, executar merge somente após aprovação do PR.
+
 O repositório está na pasta pai, inicializado pelo workspace. Os comandos Git
 abaixo são executados nessa pasta, fora de `afiliados-ml/`.
 Trabalhar em `feature/<nome>`; nunca fazer commits diretamente em `main`.
