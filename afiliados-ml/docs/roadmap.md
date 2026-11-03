@@ -1,5 +1,18 @@
 # Etapas e validação
 
+## Escopo atual acordado
+
+O usuário antecipou a API para esboçar o front-end com **produtos fictícios**.
+As etapas 1 e 2 já foram integradas (PRs #1 e #2).
+A branch `feature/products-api` entrega contrato HTTP versionado, consultas,
+dados e imagens locais de demonstração. Não implementa busca de produtos reais,
+importação por JSON/link, tela de painel ou publicação. A sequência original
+abaixo passa a ser um backlog, não autorização para implementar tudo agora.
+
+Após validar este MVP, o front-end pode usar os endpoints atuais. A captação
+real será um serviço separado, populando os mesmos modelos e sem alterar os
+DTOs da API. Regras de desconto e publicadores continuam adiados.
+
 ## Fluxo obrigatório a partir desta etapa
 
 1. Explicar o objetivo antes de implementar.

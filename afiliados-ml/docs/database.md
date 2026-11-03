@@ -1,5 +1,13 @@
 # Banco de dados — etapa 2
 
+## Evolução no MVP de demonstração
+
+A revisão `21b3f7a6c001` adiciona `products.source` com `demo`, `manual` ou
+`mercadolivre`. Registros anteriores recebem `manual`. O seed é explicitamente
+marcado como `demo`; veja [contrato HTTP](api.md).
+Essa migração não recria a tabela de produtos, preservando referências já
+existentes. A reversão remove a coluna (SQLite 3.35+ ou PostgreSQL).
+
 ## Relações
 
 ```mermaid
