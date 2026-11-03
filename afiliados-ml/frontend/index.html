@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#f7f7f2" />
   <meta name="description" content="Catálogo de demonstração para organizar produtos e acompanhar seus preços." />
   <title>Garimpo — Catálogo de produtos</title>
+  <script src="/theme-init.js"></script>
 </head>
 <body>
   <div class="app-shell">
@@ -18,7 +19,7 @@
       <div class="sidebar-footer"><span class="avatar">G</span><div>Meu projeto<small>Desenvolvimento local</small></div></div>
     </aside>
     <div class="main-shell">
-      <header class="topbar"><div class="breadcrumb">Meu espaço <span>/</span> <strong>Catálogo</strong></div><button id="connection-button" class="connection-button"><span class="status-dot"></span><span id="connection-label">Conectar API</span><span aria-hidden="true">↗</span></button></header>
+      <header class="topbar"><div class="breadcrumb">Meu espaço <span>/</span> <strong>Catálogo</strong></div><div class="topbar-actions"><label class="theme-picker"><span aria-hidden="true">◐</span><span class="sr-only">Aparência</span><select id="theme-select"><option value="system">Sistema</option><option value="light">Claro</option><option value="dark">Escuro</option></select></label><button id="connection-button" class="connection-button"><span class="status-dot"></span><span id="connection-label">Conectar API</span><span aria-hidden="true">↗</span></button></div></header>
       <main id="catalogo">
         <div class="page-heading"><div><p class="eyebrow">SEU PRÓXIMO BOM ACHADO</p><h1>Catálogo de produtos<span>.</span></h1><p class="subtitle">Tudo o que você está de olho, em um só lugar.</p></div><button class="button secondary" id="refresh-button" disabled><span aria-hidden="true">↻</span> Atualizar catálogo</button></div>
         <section class="demo-banner" aria-label="Aviso de demonstração"><div class="banner-symbol" aria-hidden="true">✳</div><div><strong>Ideias reais. Produtos fictícios.</strong><p>Este é o seu espaço para experimentar. Os produtos e preços são exemplos, sem compras ou publicações.</p></div><span class="demo-label">MODO DEMONSTRAÇÃO</span></section>
