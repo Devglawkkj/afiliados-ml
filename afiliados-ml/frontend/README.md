@@ -1,5 +1,19 @@
 # Garimpo — front-end local
 
+## Estoque do fornecedor — parte 3
+
+**Fornecedor → Meu estoque** agora permite cadastrar e editar produtos
+fictícios com código, título, categoria, descrição, preço de fornecimento,
+quantidade, prazo de envio e até três fotos locais. Também oferece busca,
+filtros de disponibilidade e dois exemplos opcionais.
+
+O estoque é persistido apenas no navegador, sem usar a API Python. O catálogo
+do vendedor será conectado a esses registros na parte 4. Veja
+[campos, limites, testes e comandos Git](../docs/inventory-demo.md).
+
+As seções das partes anteriores abaixo registram a evolução do protótipo;
+o cadastro antes indicado como futuro está disponível nesta entrega.
+
 ## Perfis de demonstração — parte 2
 
 A primeira tela permite escolher **Entrar como vendedor** ou **Entrar como

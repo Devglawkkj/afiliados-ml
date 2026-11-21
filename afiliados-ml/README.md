@@ -18,8 +18,9 @@ Acesse **http://localhost:5173**, escolha **Entrar como vendedor**, clique em
 endereço da API e o `API_TOKEN` do `.env` do backend. O token fica em memória
 e não deve ser incluído no código do front-end. Node.js 22.12+ é necessário.
 
-A entrada também oferece **Fornecedor**, com visão geral e estrutura da futura
-área de estoque. Os acessos são demonstrações, sem autenticação real. Use
+A entrada também oferece **Fornecedor**, com visão geral e cadastro fictício
+de estoque salvo no navegador. Veja [estoque de demonstração](docs/inventory-demo.md).
+Os acessos são demonstrações, sem autenticação real. Use
 **Trocar perfil** para retornar à seleção; a conexão da API será encerrada.
 
 Ferramenta em construção, por etapas. As etapas 1 e 2 incluem ambiente,

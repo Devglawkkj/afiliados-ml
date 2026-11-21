@@ -1,6 +1,8 @@
 import './style.css';
 import './theme.css';
 import './profiles.css';
+import './inventory.css';
+import { mountInventory } from './inventory-ui.js';
 import { profiles, resolvePage, createProfileSession } from './profiles.js';
 import { initializeTheme } from './theme.js';
 import { createApi, imageUrl } from './api.js';
@@ -14,6 +16,7 @@ const grid = $('#product-grid');
 const statePanel = $('#catalog-state');
 const state = { api: null, page: 1, pageSize: 6, q: '', category: '', total: 0, controller: null, detailController: null, detailPage: 1, detailId: null };
 let connectionController = null;
+let inventoryCleanup = null;
 Object.entries(categoryNames).forEach(([value, name]) => $('#category').add(new Option(name, value)));
 
 function wireImages(parent) {
@@ -220,24 +223,22 @@ function navigateProfile(page) {
 function overviewMarkup(role) {
   const seller = role === 'seller';
   return `<div class="profile-page-heading"><p class="eyebrow">PERFIL DE DEMONSTRAÇÃO · ${seller ? 'VENDEDOR' : 'FORNECEDOR'}</p><h1 id="profile-area-title" tabindex="-1">${seller ? 'Seu espaço para vender' : 'Seu estoque. Novas conexões'}<span>.</span></h1><p class="subtitle">${seller ? 'Conheça o caminho entre encontrar um produto e preparar seu anúncio.' : 'Você cuida dos produtos e do envio. O vendedor cuida do anúncio e do cliente.'}</p></div>
-    <div class="role-notice"><span aria-hidden="true">✧</span><div><strong>Estamos construindo esse espaço, uma parte por vez.</strong><p>Os acessos são simulados. Cadastros, anúncios e pedidos reais serão adicionados nas próximas entregas.</p></div></div>
+    <div class="role-notice"><span aria-hidden="true">✧</span><div><strong>Estamos construindo esse espaço, uma parte por vez.</strong><p>Os acessos são simulados. O fornecedor já pode experimentar o estoque local; anúncios e pedidos reais virão depois.</p></div></div>
     <div class="workflow-grid">${(seller ? [
       ['01', 'Encontre um produto', 'Explore os exemplos de produtos, os preços e o histórico.', true],
       ['02', 'Prepare seu anúncio', 'Você poderá personalizar título, descrição, fotos e preço de venda.', false],
       ['03', 'Cuide do relacionamento', 'Chat e pós-venda ficarão com você; o fornecedor executará o envio.', false],
     ] : [
-      ['01', 'Organize seu estoque', 'O próximo passo será cadastrar fotos, descrições, preço e quantidade.', false],
+      ['01', 'Organize seu estoque', 'Cadastre produtos fictícios, fotos, descrições, preço e quantidade neste navegador.', true],
       ['02', 'Conecte-se a vendedores', 'Os produtos cadastrados poderão aparecer no catálogo do vendedor.', false],
       ['03', 'Prepare e envie', 'Separação, embalagem e envio ficarão com você quando houver pedidos.', false],
     ]).map(([number, title, description, ready]) => `<article class="workflow-card"><span class="step-number">${number}</span><span class="small-tag">${ready ? 'Disponível no protótipo' : 'Próxima etapa'}</span><h2>${title}</h2><p>${description}</p></article>`).join('')}</div>
-    <div class="role-next-step"><div><h2>${seller ? 'Explore os primeiros produtos' : 'Comece pela estrutura do estoque'}</h2><p>${seller ? 'O catálogo atual contém apenas exemplos fictícios.' : 'A área de estoque já tem seu lugar na navegação. O cadastro virá na parte 3.'}</p></div><button id="profile-primary-action" class="button primary">${seller ? 'Explorar catálogo' : 'Ver área de estoque'} →</button></div>`;
-}
-
-function renderInventory() {
-  return `<div class="profile-page-heading"><p class="eyebrow">FORNECEDOR · DEMONSTRAÇÃO</p><h1 id="profile-area-title" tabindex="-1">Meu estoque<span>.</span></h1><p class="subtitle">O espaço dos produtos que você vai disponibilizar aos vendedores.</p></div><section class="inventory-preview" aria-label="Preparação do cadastro de estoque"><div class="inventory-columns" aria-hidden="true"><span>Produto</span><span>Preço de fornecimento</span><span>Quantidade</span><span>Disponibilidade</span></div><div class="inventory-empty"><span class="role-symbol" aria-hidden="true">▤</span><h2>Seu estoque começa na próxima etapa.</h2><p>O cadastro de produtos, fotos, descrições e quantidades será implementado na parte 3. Nenhum estoque foi cadastrado para este perfil.</p><span class="small-tag">Cadastro ainda não disponível</span></div></section><p class="profile-footnote">Esta tela mostra a organização planejada. Não representa uma conta, um estoque real ou uma área protegida.</p>`;
+    <div class="role-next-step"><div><h2>${seller ? 'Explore os primeiros produtos' : 'Seu primeiro cadastro começa aqui'}</h2><p>${seller ? 'O catálogo atual contém apenas exemplos fictícios.' : 'Experimente o cadastro fictício com fotos, quantidade e prazo de envio.'}</p></div><button id="profile-primary-action" class="button primary">${seller ? 'Explorar catálogo' : 'Ver área de estoque'} →</button></div>`;
 }
 
 function renderProfile() {
+  inventoryCleanup?.();
+  inventoryCleanup = null;
   const role = profileSession.current;
   const selected = role ? profiles[role] : null;
   const page = resolvePage(role, location.hash);
@@ -262,7 +263,8 @@ function renderProfile() {
   $('#profile-note-description').textContent = role === 'supplier' ? 'Conheça seu espaço de estoque e as responsabilidades de envio.' : 'Explore os exemplos e acompanhe a evolução dos preços.';
   $('#profile-navigation').innerHTML = selected.pages.map(item => `<a class="nav-link ${item.id === page ? 'active' : ''}" href="#/${selected.path}/${item.id}" ${item.id === page ? 'aria-current="page"' : ''}><span aria-hidden="true">${item.icon}</span>${item.label}</a>`).join('');
   if (page !== 'catalog') {
-    $('#profile-area').innerHTML = page === 'inventory' ? renderInventory() : overviewMarkup(role);
+    if (page === 'inventory') inventoryCleanup = mountInventory($('#profile-area'));
+    else $('#profile-area').innerHTML = overviewMarkup(role);
     $('#profile-primary-action')?.addEventListener('click', () => navigateProfile(role === 'seller' ? 'catalog' : 'inventory'));
     $('#profile-area-title').focus({ preventScroll: true });
   }
